@@ -1,0 +1,12 @@
+--- 
+- hosts: all # java vm
+  roles:
+        - {role: peterszatmary.xfce }
+        - {role: tunght13488.java } # install java 1.8
+        - {role: MagneDavidsen.gradle } # install gradle path missing
+        - {role: binarytemple.jenkins } # install jenkins
+        - {role: jgoodall.maven3, maven_version: 3.1.1} # install maven
+
+  sudo: true
+  tasks:
+

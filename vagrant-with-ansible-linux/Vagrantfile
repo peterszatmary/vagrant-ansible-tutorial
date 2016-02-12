@@ -1,0 +1,28 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # boxes at https://atlas.hashicorp.com/search.
+  config.vm.box = "bento/debian-7.8-i386"
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Disable the new default behavior introduced in Vagrant 1.7, to
+  # ensure that all Vagrant machines will use the same SSH key pair.
+  # See https://github.com/mitchellh/vagrant/issues/5005
+  config.ssh.insert_key = false
+
+  # VirtualBox:
+  config.vm.provider "bento/debian-7.8-i386" do |vb|
+     # Display the VirtualBox GUI when booting the machine
+     vb.gui = true
+     # Customize the amount of memory on the VM:
+     vb.memory = "1024"
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "vvvv" # v, verbose, vvv
+    ansible.playbook = "playbook.yml"
+  end
+
+end

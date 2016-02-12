@@ -1,0 +1,28 @@
+--- 
+- hosts: all # apply to all vm hosts in Vagrantfile
+  roles:
+        - { role: JamesSmaldon.xfce }
+  sudo: true
+  tasks:
+
+  - name: Add source repository into sources list.
+    apt_repository: repo='deb http://archive.canonical.com/ubuntu hardy partner' state=present
+
+  - name: Add source repository into sources list.
+    apt_repository: repo='deb-src http://archive.canonical.com/ubuntu hardy partner' state=present
+
+  - name: Install Maven 2
+    package: name=maven2 state=latest
+
+  - name: Creates directory for Maven 3
+    file: path=/home/vagrant/etc/maven3 state=directory
+
+  - name: Download, install and unzip Maven 3
+    unarchive: src=http://tux.rainside.sk/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip dest=/home/vagrant/etc/maven3 copy=no
+
+  - name: Install chromium browser
+    package: name=chromium-browser state=latest 
+
+  - name: Install unzip
+    package: name=unzip state=latest 
+
