@@ -32,6 +32,7 @@ Ansible give you ability to automate application installation and automate confi
 
 ## Important urls to know
 
+- [Great source of examples](https://github.com/leucos/ansible-tuto)
 - [Ansible galaxy](https://galaxy.ansible.com/) : hub for sharing Ansible roles.
 - [Atlas](https://atlas.hashicorp.com/boxes/search) : For creating and sharing Vagrant boxes.
 - [Packer](https://www.packer.io/) For creating vagrant boxes.
